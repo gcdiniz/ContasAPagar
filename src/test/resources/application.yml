@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+
+  flyway:
+    enabled: false
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+      - org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration
+
+app:
+  jwt:
+    secret: chave-secreta-teste-com-pelo-menos-256-bits-para-hmac-sha-algoritmo
+    expiration-ms: 86400000
+
+  rabbitmq:
+    queue:
+      csv-import: csv-import-queue-test
+    exchange:
+      csv-import: csv-import-exchange-test
+    routing-key:
+      csv-import: csv-import-routing-key-test
