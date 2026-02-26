@@ -71,7 +71,35 @@ As variáveis disponíveis são:
 | `APP_PORT` | Porta exposta pela aplicação | `8080` |
 
 >  O `JWT_SECRET` é utilizado para assinar e validar os tokens JWT. Deve ter no mínimo 32 caracteres (256 bits).
-### Subir toda a infraestrutura + aplicação
+
+Crie um arquivo `.env` na raiz do projeto e preencha com seus dados. Exemplo:
+
+```env
+# =============================================
+# Contas a Pagar - Variáveis de Ambiente
+# =============================================
+
+# --- PostgreSQL ---
+DB_HOST=postgres
+DB_PORT=5432
+DB_NAME=contas_pagar
+DB_USER=postgres
+DB_PASSWORD=postgres
+
+# --- RabbitMQ ---
+RABBITMQ_HOST=rabbitmq
+RABBITMQ_PORT=5672
+RABBITMQ_USER=guest
+RABBITMQ_PASSWORD=guest
+
+# --- JWT ---
+JWT_SECRET=minha-chave-secreta-super-segura-com-pelo-menos-256-bits-para-hmac-sha
+
+# --- Aplicação ---
+APP_PORT=8080
+```
+
+### Subir toda a infraestrutura + aplicação 
 
 ```bash
 docker-compose up --build
